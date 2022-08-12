@@ -5,6 +5,7 @@ const LevCoin = require("../levcoin/levcoin");
 var router = express.Router();
 const user_db = require('./../server')("users");
 const levCoin_db = require('./../server')("coin_cost");
+const currency_converter = require('currency-converter-lt')
 
 const levcoin = new LevCoin(levCoin_db);
 
@@ -157,11 +158,25 @@ router.get('/getCoinsAmount', async (req, res) => {
     res.send({msg: await user_db.GET_COINS_AMOUNT(req.session.userid)})
 })
 
-router.get('/getCoinsAmountInDollars', async (req, res) => {
+getDollars = async (req) => {
     const coin_cost_in_dollars = await levcoin.getPrice()/100;
 
-    res.send({msg: await user_db.GET_COINS_AMOUNT(req.session.userid)*coin_cost_in_dollars})
+    return await user_db.GET_COINS_AMOUNT(req.session.userid)*coin_cost_in_dollars;
+}
+
+router.get('/getCoinsAmountInDollars', async (req, res) => {
+    res.send({msg: await getDollars(req)})
 })
+
+router.get('/getCoinsAmountInIls', async (req, res) => {
+    const dollars = await getDollars(req);
+
+    let currencyConverter = new currency_converter()
+    await currencyConverter.from("USD").to("ILS").amount(dollars).convert().then((response) => {
+        res.send({msg: response})
+    })
+})
+
 
 router.post('/makeTransaction', async (req, res) => {
     let toEmail = req.body.to;
