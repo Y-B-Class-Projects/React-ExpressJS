@@ -1,0 +1,56 @@
+.MainCard {
+    margin-top: 2em;
+    padding: 0.5em 0.5em 0.5em;
+    border-radius: 2em !important;
+    text-align: left;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.coinsData {
+    border-radius: 25px;
+    width: 115px;
+    height: 40px;
+    display: table;
+    padding-left: 10px;
+}
+
+.my-p{
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.dollar-custom1{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    border: 0;
+    outline: none;
+
+    border-radius: 100px;
+    z-index: 2;
+    max-height: 70px;
+    max-width: 70px;
+}
+
+.coins-visual {
+    width: 115px;
+    float: right;
+}
+
+.input-group-custom1{
+    position: relative;
+    width: 150px;
+}
+
+.coins-title {
+    float: left;
+    text-align: left;
+    padding-left: 15px;
+    padding-top: 5px;
+}
+
+.two-divs {
+    max-height: 50px;
+    width: 350px;
+}

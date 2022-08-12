@@ -1,0 +1,41 @@
+.borderless td, .borderless th {
+    border: none;
+}
+
+
+.my-cell{
+    max-width: 20px;
+}
+
+.input-group-custom{
+    position: relative;
+    width: 150px;
+}
+.input-custom{
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 100px;
+    line-height: 1;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.dollar-custom{
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    bottom: 3px;
+    border: 0;
+    outline: none;
+    margin: 0;
+    border-radius: 100px;
+    z-index: 2;
+}
+
+.MainCard {
+    margin-top: 2em;
+    padding: 0.5em 0.5em 0.5em;
+    border-radius: 2em !important;
+    text-align: left;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}

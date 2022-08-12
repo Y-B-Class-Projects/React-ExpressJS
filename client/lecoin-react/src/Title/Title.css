@@ -1,0 +1,19 @@
+/* Rounded border */
+hr.rounded {
+    border-top: 5px solid #bbb;
+    border-radius: 5px;
+    max-width: 40%;
+}
+
+.wrapper {
+    width: 40%;
+    overflow: hidden; /* will contain if #first is longer than #second */
+}
+.first {
+    width: 80%;
+    float:left; /* add this */
+}
+.second {
+    overflow: hidden; /* if you don't want #second to wrap below #first */
+    float: right;
+}

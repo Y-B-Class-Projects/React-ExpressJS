@@ -1,0 +1,24 @@
+.card {
+    margin-top: 2em;
+    padding: 0.5em 0.5em 0.5em;
+    border-radius: 2em !important;
+    text-align: left;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+img {
+    width: 40%;
+    border-radius: 50%;
+    margin: 10% auto auto auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+}
+
+.register_card {
+    border-radius: 20em;
+    padding: 0em 0em 0.5em;
+}
+
+.centerImage {
+    text-align: center;
+    display: block;
+}
