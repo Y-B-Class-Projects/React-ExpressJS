@@ -1,0 +1,15 @@
+.MainCard {
+    margin-top: 2em;
+    padding: 0.5em 0.5em 0.5em;
+    border-radius: 2em !important;
+    text-align: left;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.statusTable{
+
+}
+th, td {
+    padding-right: 20px;
+}

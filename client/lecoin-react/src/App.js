@@ -10,6 +10,7 @@ import Main from "./main/Main";
 import Footer from "./Footer/Footer";
 import UserManagement from "./UserManagement/UserManagement";
 import HomePage from "./HomePage/HomePage";
+import Blockchain from "./Blockchain/Blockchain";
 
 class App extends React.Component {
     state = {
@@ -62,6 +63,11 @@ class App extends React.Component {
             case '#user-management':
                 if (this.state.isAdmin) {
                     Component = <UserManagement />;
+                }
+                break;
+            case '#blockchain':
+                if (this.state.isAdmin) {
+                    Component = <Blockchain />;
                 }
                 break;
             default:

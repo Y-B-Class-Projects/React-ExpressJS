@@ -2,13 +2,16 @@ var express = require('express');
 const path = require('path');
 const sessions = require("express-session");
 const LevCoin = require("../levcoin/levcoin");
-var router = express.Router();
+const router = express.Router();
 const user_db = require('./../server')("users");
 const levCoin_db = require('./../server')("coin_cost");
+const blockChain_db = require('./../server')("blocks");
 const currency_converter = require('currency-converter-lt')
+const Block = require("../blockchain/block");
+const BlockChain = require("../blockchain/blockchain");
 
 const levcoin = new LevCoin(levCoin_db);
-
+const blockChain = new BlockChain(blockChain_db);
 
 router.post('/data', async (req, res) => {
     let username = req.body.username;
@@ -181,11 +184,14 @@ router.get('/getCoinsAmountInIls', async (req, res) => {
 router.post('/makeTransaction', async (req, res) => {
     let toEmail = req.body.to;
     let amount = parseFloat(req.body.amount);
-
-    console.log(toEmail, amount)
+    const from = req.session.userid;
 
     if (await user_db.IS_USER_EXIST(toEmail)) {
-        user_db.TRANSACTION(req.session.userid, toEmail, amount)
+        user_db.TRANSACTION(from, toEmail, amount)
+
+        let block = new Block({from: from, to: toEmail, amount: amount})
+        await blockChain.addNewBlock(block)
+
         res.send({msg: "Success!"});
     } else {
         res.send({msg: "ERROR, The destination user does not exist"});

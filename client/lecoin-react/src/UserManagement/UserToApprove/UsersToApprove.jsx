@@ -31,7 +31,6 @@ function UsersToApprove() {
 
     useEffect(() => {
         refreshData();
-        console.log(data);
     }, []);
 
     const getRows = () => {

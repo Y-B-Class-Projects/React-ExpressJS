@@ -37,6 +37,7 @@ app.use(sessionMiddleware)
 
 require("./users/users_model")(db)
 require("./levcoin/lecoin_model")(db)
+require("./blockchain/blockchain_model")(db)
 
 module.exports = model => db.model(model);
 
@@ -47,6 +48,10 @@ app.use(bodyParser.json());
 
 var users = require('./users/users_controller.js');
 app.use('/users', sessionMiddleware, users);
+
+const blockchain = require('./blockchain/blockchain_controller.js');
+app.use('/blockchain', sessionMiddleware, blockchain);
+
 
 
 app.listen(port, () => {

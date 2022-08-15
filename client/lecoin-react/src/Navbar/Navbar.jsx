@@ -11,6 +11,23 @@ function Navbar(props) {
         props.logoutHandler();
     }
 
+    const getPages = async=> {
+        return (
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0" id="main_navbar">
+                <li className="nav-item">
+                    <a className="nav-link" id="about" href="#home">Home</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" id="about" href="#blockchain">Blockchain</a>
+                </li>
+                <li className="nav-item">
+                    {props.isAdmin &&
+                        <a className="nav-link" id="contact_us" href="#user-management">Users management</a>}
+                </li>
+            </ul>
+        )
+    }
+
     useEffect(() => {
         fetch('/users/username').then(r => r.json()).then(r => setUsername(r.msg));
     }, []);
@@ -28,14 +45,7 @@ function Navbar(props) {
                     <span className="navbar-toggler-icon"/>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" id="main_navbar">
-                        <li className="nav-item">
-                            <a className="nav-link" id="about" href="#home">Home</a>
-                        </li>
-                        <li className="nav-item">
-                            {props.isAdmin && <a className="nav-link" id="contact_us" href="#user-management">User management</a>}
-                        </li>
-                    </ul>
+                    {getPages()}
                     <div className="d-flex">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
